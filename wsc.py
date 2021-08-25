@@ -8,7 +8,7 @@ class WSC_Client(WebSocketClient):
         req = { "action": "auth", "key": sc.API_KEY, "secret": sc.SECRET_KEY }
         self.send(json.dumps(req))
 
-        req = {"action":"subscribe","trades":[],"quotes":[],"bars":["AAPL","VOO"]}
+        req = {"action":"subscribe", "bars":["AAPL","VOO"]}
         self.send(json.dumps(req))
 
     def closed(self, code, reason=None):

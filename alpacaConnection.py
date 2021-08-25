@@ -155,28 +155,13 @@ class AlpacaConnection:
     
     
     """
-    getLiveDataMarkets() Devuelve los datos de los mercados que seleccionemos en tiempo real.
-
-    # temp: El tiempo de cada vela.
-    # timeframe: El valor de tiempo de las velas. (EJ. Min, Hour, Day).
-    # symbols: Símbolo o ID del activo para identificar el activo a negociar (EJ. “AAPL,TSLA,MSFT,EURUSD”).
-    # start: Fecha de inicio de los datos de mercado (EJ. 2019-10-12).
-    # end: fecha de finalización de los datos de mercado (EJ. 2020-10-12).
-    # limit: Número de puntos de datos a devolver. Debe estar en el rango 1-10000, por defecto es 1000.
+    getLiveDataMarkets() Devuelve los datos de los mercados que seleccionemos en un portafolio(watchlists) en tiempo real.
     """
+    # Fase de desarrollo o eliminación
+    def getLiveDataMarkets(self):
+        data = {"action":"subscribe","trades":[],"quotes":[],"bars":self.__PORTFOLIO}
 
-    def getLiveDataMarkets(self, temp, timeframe, symbol, start, end, limit=1000):
-        data_url = "{}/v2/stocks/{}/bars".format(self.__BASE_URL, symbol)
-        data = {
-            "start": start,
-            "end": end,
-            "limit": limit,
-            "timeframe": str(temp)+timeframe
-        }
-
-        r = requests.get(data_url, json=data, headers=self.__HEADERS)
-
-        return r
+        return data
     
     """
     getHistoricalDataMarkets() Devuelve los datos de los mercados que seleccionemos.
