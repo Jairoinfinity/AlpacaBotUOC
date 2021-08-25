@@ -24,13 +24,12 @@ class WSC_Client(WebSocketClient):
             bid = data['bids'][0]
             print('Bid:', bid)
 
-    def connect(url):
+    def connectToAlpaca(url):
         if __name__ == '__main__':
             ws = None
             try:
                 ws = WSC_Client(url)
                 ws.connect()
                 ws.run_forever()
-                ws.opened()
             except KeyboardInterrupt:
                 ws.close()
