@@ -5,11 +5,7 @@ import setup_config as sc
 class WSC_Client(WebSocketClient):
 
     def opened(self):
-        req = {
-            "action": "auth",
-            "key": sc.API_KEY,
-            "secret": sc.SECRET_KEY
-        }
+        req = '{ "action": "auth", "key": "PK6Y2YCCY7U3WJZSIMOU", "secret": "xJXxdvDDblwkGUmoaEmRFVi1LRG1npcSPPwgnALq" }'
         self.send(req)
 
     def closed(self, code, reason=None):
@@ -17,19 +13,4 @@ class WSC_Client(WebSocketClient):
 
     def received_message(self, resp):
         resp = json.loads(str(resp))
-        data = resp['data']
-        if type(data) is dict:
-            ask = data['asks'][0]
-            print('Ask:', ask)
-            bid = data['bids'][0]
-            print('Bid:', bid)
-
-    def connectToAlpaca(url):
-        if __name__ == '__main__':
-            ws = None
-            try:
-                ws = WSC_Client(url)
-                ws.connect()
-                ws.run_forever()
-            except KeyboardInterrupt:
-                ws.close()
+        print(resp)

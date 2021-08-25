@@ -2,7 +2,18 @@ from alpacaConnection import AlpacaConnection
 from wsc import WSC_Client as wsc
 import setup_config as sc
 
-wsc.connectToAlpaca('wss://stream.data.alpaca.markets/v2/iex')
+def connectToAlpaca(url):
+        print(url)
+        if __name__ == '__main__':
+            ws = None
+            try:
+                ws = wsc(url)
+                ws.connect()
+                ws.run_forever()
+            except KeyboardInterrupt:
+                ws.close()
+
+connectToAlpaca('wss://stream.data.alpaca.markets/v2/iex')
 
 
 """
